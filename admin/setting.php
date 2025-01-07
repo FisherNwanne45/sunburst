@@ -246,7 +246,7 @@ if (isset($_POST['save_settings'])) {
 
                             <div class="form-group">
     <label>Twillio Config Option</label>
-    <select class="form-control select2" name="twillio_status" style="width: 100%;">
+    <select class="form-control select2" disabled name="twillio_status" style="width: 100%;">
         <option value="">Select Option</option>
         <option value="1" <?php echo ($page['twillio_status'] === '1') ? 'selected' : ''; ?>>On</option>
         <option value="0" <?php echo ($page['twillio_status'] === '0') ? 'selected' : ''; ?>>Off</option>

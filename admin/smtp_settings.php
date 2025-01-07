@@ -97,7 +97,7 @@ if (isset($_POST['save_smtpsettings'])) {
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                <!--    <p>How to get SMTP Credentials from cPanel ? <a href="https://www.labelhosting.com/knowledgebase.php?action=displayarticle&id=116" target="_blank">View Guide</a></p><br>-->
+                    <p>How to get SMTP Credentials from cPanel ? <a href="https://www.labelhosting.com/knowledgebase.php?action=displayarticle&id=116" target="_blank">View Guide</a></p><br>
                     <div class="row">
 
                         <?php if (isset($msg1)) echo $msg1; ?>

@@ -84,7 +84,7 @@ $amount = $temp_trans['amount'];
                 </li>
                 <li>
                     <strong>Fee</strong>
-                    <h3 class="m-0"><?= $currency ?><?php echo number_format($WireFee, 2, '.', ','); ?></h3>
+                    <h3 class="m-0"> <?= $page['wirefee'] ?></h3>
                 </li>
                 <li>
                     <strong>Routine Number</strong>

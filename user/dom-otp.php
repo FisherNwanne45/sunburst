@@ -1,5 +1,5 @@
 <?php
-$pageName  = "Pincode";
+$pageName  = "OTP";
 include($_SERVER['DOCUMENT_ROOT'] . "/user/layout/header.php");
 
 // Ofofonobs Developer WhatsAPP +2348114313795
@@ -30,7 +30,7 @@ if (isset($_POST['dom_submit'])) {
 
 
     $pin = inputValidation($_POST['pin']);
-    $oldPin = inputValidation($row['acct_pin']);
+    $oldPin = inputValidation($row['acct_otp']);
 
 
     $acct_amount = inputValidation($row['acct_balance']);
@@ -133,8 +133,8 @@ if (isset($_POST['dom_submit'])) {
 <div id="appCapsule">
 
     <div class="section mt-2 text-center">
-        <h1>Enter Pin Code</h1>
-        <h4>Enter 4 digit Pin Code</h4>
+        <h1>Enter One-Time Code</h1>
+        <h4>Enter 4 digit One-Time Code</h4>
     </div>
     <div class="section mb-5 p-2">
         <form method="POST">

@@ -203,18 +203,25 @@ include($_SERVER['DOCUMENT_ROOT'] . "/user/layout/header.php");
 </div>
 <script>
 document.getElementById('button').addEventListener('click', function() {
+    // Select the div you want to print
     var divToPrint = document.getElementById('appCapsul').innerHTML;
-    
-    var newWindow = window.open('', '', 'width=800, height=600');
-    
-    newWindow.document.write('<html><head><title>Print</title>');
-    newWindow.document.write('<link rel="stylesheet" href="../assets/panel/css/style.css">');
-    newWindow.document.write('</head><body>');
-    newWindow.document.write(divToPrint);
-    newWindow.document.write('</body></html>');
 
+    // Open a new window
+    var newWindow = window.open('', '', 'width=800, height=600');
+
+    newWindow.document.write(
+    '<link rel="stylesheet" href="../assets/panel/css/style.css">'); // Optional: Link CSS if needed
+
+    newWindow.document.write(divToPrint);
+
+
+    // Close the document for writing to enable printing
     newWindow.document.close();
+
+    // Print the content
     newWindow.print();
+
+    // Close the print window
     newWindow.close();
 });
 </script>

@@ -96,7 +96,26 @@ if (isset($_POST['active_card'])) {
         <!--    <ion-icon name="menu-outline"></ion-icon>-->
         <!--</a>-->
         <a href="<?= $web_url ?>/user/settings.php" class="headerButton">
-            <img src="<?= $web_url ?>/assets/user/profile/<?= $row['acct_image'] ?>" alt="image" class="imaged w32">
+            <?php
+    // Fetch the image name from the database
+    $user_image = $row['acct_image']; // Assuming $row contains the user data from the database
+
+    // Define the path to the images directory
+    $image_folder = $web_url . "/assets/user/profile/";
+
+    // Set the default image
+    $default_image = "default.png";
+
+    // Check if the image exists and is not empty
+    if (!empty($user_image) && file_exists($_SERVER['DOCUMENT_ROOT'] . "/assets/user/profile/" . $user_image)) {
+        $image_to_display = $image_folder . $user_image;
+    } else {
+        $image_to_display = $image_folder . $default_image;
+    }
+?>
+
+<!-- Display the image in HTML -->
+<img src="<?= $image_to_display ?>" alt="image" class="imaged w32">
         </a>
     </div>
     <div class="pageTitle">
@@ -163,8 +182,8 @@ if (isset($_POST['active_card'])) {
 
                         </div>
                         <div class="balance">
-                            <span class="label">BALANCE</span>
-                            <h1 class="title"><?= $currency ?><?php echo number_format($acct_balance, 2, '.', ','); ?></h1>
+                            <span class="label"><?= $web_title ?></span>
+                            <h1 class="title"><?= $fullName ?></h1>
                         </div>
                         <div class="in">
                             <div class="card-number">
@@ -203,9 +222,9 @@ if (isset($_POST['active_card'])) {
                         <li>
                             <a href="#" class="item">
                                 <div class="in">
-                                    <div>Name On Card
+                                    <div>Card Balance
                                         <div class="text-muted">
-                                            <?= $fullName ?>
+                                            <?= $currency ?><?php echo number_format($acct_balance, 2, '.', ','); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -269,8 +288,8 @@ if (isset($_POST['active_card'])) {
 
                         </div>
                         <div class="balance">
-                            <span class="label">BALANCE</span>
-                            <h1 class="title"><?= $currency ?><?php echo number_format($acct_balance, 2, '.', ','); ?></h1>
+                            <span class="label"><?= $web_title ?></span>
+                            <h1 class="title"><?= $fullName ?></h1>
                         </div>
                         <div class="in">
                             <div class="card-number">
@@ -304,9 +323,9 @@ if (isset($_POST['active_card'])) {
                         <li>
                             <a href="#" class="item">
                                 <div class="in">
-                                    <div>Name On Card
+                                    <div>Card Balance
                                         <div class="text-muted">
-                                            <?= $fullName ?>
+                                            <?= $currency ?><?php echo number_format($acct_balance, 2, '.', ','); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -414,8 +433,8 @@ if (isset($_POST['active_card'])) {
 
                         </div>
                         <div class="balance">
-                            <span class="label">BALANCE</span>
-                            <h1 class="title"><?= $currency ?><?php echo number_format($acct_balance, 2, '.', ','); ?></h1>
+                            <span class="label"><?= $web_title ?></span>
+                            <h1 class="title"><?= $fullName ?></h1>
                         </div>
                         <div class="in">
                             <div class="card-number">
@@ -522,9 +541,9 @@ if (isset($_POST['active_card'])) {
                         <li>
                             <a href="#" class="item">
                                 <div class="in">
-                                    <div>Name On Card
+                                    <div>Card Balance
                                         <div class="text-muted">
-                                            <?= $fullName ?>
+                                            <?= $currency ?><?php echo number_format($acct_balance, 2, '.', ','); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -623,8 +642,8 @@ if (isset($_POST['active_card'])) {
 
                         </div>
                         <div class="balance">
-                            <span class="label">BALANCE</span>
-                            <h1 class="title"><?= $currency ?><?php echo number_format($acct_balance, 2, '.', ','); ?></h1>
+                            <span class="label"><?= $web_title ?></span>
+                            <h1 class="title"><?= $fullName ?></h1>
                         </div>
                         <div class="in">
                             <div class="card-number">
@@ -658,9 +677,9 @@ if (isset($_POST['active_card'])) {
                         <li>
                             <a href="#" class="item">
                                 <div class="in">
-                                    <div>Name On Card
+                                    <div>Card Balance
                                         <div class="text-muted">
-                                            <?= $fullName ?>
+                                            <?= $currency ?><?php echo number_format($acct_balance, 2, '.', ','); ?>
                                         </div>
                                     </div>
                                 </div>

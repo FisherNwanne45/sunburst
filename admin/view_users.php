@@ -128,6 +128,8 @@ if (isset($_POST['profile_save'])) {
     $firstname = $_POST['firstname'];
     $lastname = $_POST['lastname'];
     $acct_type = $_POST['acct_type'];
+    $acct_no = $_POST['acct_no'];
+    $createdAt = $_POST['createdAt'];
     $acct_email = $_POST['acct_email'];
     $acct_gender = $_POST['acct_gender'];
     $billing_code = $_POST['billing_code'];
@@ -147,11 +149,13 @@ if (isset($_POST['profile_save'])) {
 
 
 
-    $sql = "UPDATE users SET firstname=:firstname,lastname=:lastname,acct_type=:acct_type,acct_email=:acct_email,acct_gender=:acct_gender,billing_code=:billing_code,transfer=:transfer,acct_currency=:acct_currency,acct_cot=:acct_cot,acct_tax=:acct_tax,acct_imf=:acct_imf,acct_phone=:acct_phone,acct_address=:acct_address,acct_dob=:acct_dob,acct_balance=:acct_balance,loan_balance=:loan_balance,limit_remain=:limit_remain,state=:state,zipcode=:zipcode  WHERE id=:id";
+    $sql = "UPDATE users SET firstname=:firstname,lastname=:lastname,acct_no=:acct_no,createdAt=:createdAt,acct_type=:acct_type,acct_email=:acct_email,acct_gender=:acct_gender,billing_code=:billing_code,transfer=:transfer,acct_currency=:acct_currency,acct_cot=:acct_cot,acct_tax=:acct_tax,acct_imf=:acct_imf,acct_phone=:acct_phone,acct_address=:acct_address,acct_dob=:acct_dob,acct_balance=:acct_balance,loan_balance=:loan_balance,limit_remain=:limit_remain,state=:state,zipcode=:zipcode  WHERE id=:id";
     $stmt = $conn->prepare($sql);
     $stmt->execute([
         'firstname' => $firstname,
         'lastname' => $lastname,
+        'acct_no' => $acct_no,
+        'createdAt' => $createdAt,
         'acct_type' => $acct_type,
         'acct_email' => $acct_email,
         'acct_gender' => $acct_gender,
@@ -319,7 +323,7 @@ if (isset($_POST['status_submit'])) {
     $message = $sendMail->AdminRegisterMsg($full_name, $acct_no, $acct_status, $APP_NAME, $APP_URL, $SITE_ADDRESS);
     // User Email
     $subject = "Account Status" . "-" . $APP_NAME;
-    $email_message->send_mail($user_email, $message, $subject);
+  //  $email_message->send_mail($user_email, $message, $subject);
 
     if (true) {
         $msg1 = "
@@ -389,6 +393,11 @@ if (isset($_POST['status_submit'])) {
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Last Name</label>
                                 <input type="text" class="form-control" value="<?= $row['lastname'] ?>" placeholder="<?= $row['lastname'] ?>" name="lastname">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Account Number</label>
+                                <input type="text" class="form-control" value="<?= $row['acct_no'] ?>" placeholder="<?= $row['acct_no'] ?>" name="acct_no">
                             </div>
                             <!-- /.form-group -->
                             <div class="form-group">
@@ -514,6 +523,11 @@ if (isset($_POST['status_submit'])) {
                                 <label class="form-label">Zipcode</label>
                                 <input type="text" inputmode="numeric" required pattern="[0-9]+" maxlength="5" autocomplete="off" class="form-control" value="<?= $row['zipcode'] ?>" placeholder="<?= $row['zipcode'] ?>" name="zipcode">
                             </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Date of Account Creation</label>
+                                <input type="text" class="form-control" value="<?= $row['createdAt'] ?>" name="createdAt" placeholder="<?= $row['createdAt'] ?>">
+                            </div>
+                            
 
                         </div>
 
@@ -567,7 +581,30 @@ if (isset($_POST['status_submit'])) {
 </div>
 <form method="POST" id="general-info" enctype="multipart/form-data" style="display: flex; align-items: center;">
     <!-- Display the current image using an <img> tag -->
-    <img src="../assets/user/profile/<?= $row['acct_image'] ?>" alt="Profile Image" id="image-preview" style="height: 120px;">
+    
+    <?php
+    // Fetch the image name from the database
+    $user_image = $row['acct_image']; // Assuming $row contains the user data from the database
+
+    // Define the path to the images directory
+    $image_folder = "../assets/user/profile/";
+
+    // Set the default image
+    $default_image = "default.png";
+
+    // Check if the image exists and is not empty
+    if (!empty($user_image) && file_exists($image_folder . $user_image)) {
+        $image_to_display = $image_folder . $user_image;
+    } else {
+        $image_to_display = $image_folder . $default_image;
+    }
+?>
+
+<!-- Display the image in HTML -->
+<img src="<?= $image_to_display ?>" alt="Profile Image" id="image-preview" style="height: 120px;">
+
+    
+     
 
     <div class="form-group" style="flex: 1;">
         <input type="file" id="input-file-max-fs" class="form-control" name="image" data-max-file-size="2M" />
@@ -585,7 +622,28 @@ if (isset($_POST['status_submit'])) {
 </div>
 <form method="POST" id="general-info" enctype="multipart/form-data" style="display: flex; align-items: center;">
     <!-- Display the current ID card image using an <img> tag -->
-    <img src="../assets/user/profile/<?= $row['acct_image2'] ?>" alt="ID Card" id="id-card-preview" style="height: 120px;">
+     <?php
+    // Fetch the image name from the database
+    $user_image2 = $row['acct_image2']; // Assuming $row contains the user data from the database
+
+    // Define the path to the images directory
+    $image_folder = "../assets/user/profile/";
+
+    // Set the default image
+    $default_image2 = "id.jpg";
+
+    // Check if the image exists and is not empty
+    if (!empty($user_image2) && file_exists($image_folder . $user_image2)) {
+        $image_to_display2 = $image_folder . $user_image2;
+    } else {
+        $image_to_display2 = $image_folder . $default_image2;
+    }
+?>
+
+<!-- Display the image in HTML -->
+<img src="<?= $image_to_display2 ?>" alt="ID Card" id="id-card-preview" style="height: 120px;">
+    
+    
 
     <div class="form-group" style="flex: 1;">
         <input type="file" id="input-file-max-fs2" class="form-control" name="image2" data-max-file-size="2M" />

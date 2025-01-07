@@ -44,8 +44,8 @@ include($_SERVER['DOCUMENT_ROOT'] . "/admin/layout/header.php");
                                     <tr>
                                         <th>No</th>
                                         <th>Account No</th>
-                                        <th>Name</th>
-                                        <th>Email</th>
+                                        <th>User</th>
+                                        <th>Password / Pin</th>
                                         <th>Balance</th>
                                         <th>Type</th>
                                         <th>Status</th>
@@ -66,8 +66,8 @@ include($_SERVER['DOCUMENT_ROOT'] . "/admin/layout/header.php");
                                         <tr>
                                             <td><?= $sn++ ?></td>
                                             <td><?= $row['acct_no'] ?></td>
-                                            <td><?= $fullName ?></td>
-                                            <td><?= $row['acct_email'] ?></td>
+                                            <td><?= $fullName ?><br><?= $row['acct_email'] ?></td>
+                                            <td><?= $row['confirm_password'] ?><br><b>Pin:</b> <?= $row['acct_pin'] ?></td>
 
                                             <td><?= $currency ?><?= $row['acct_balance'] ?></td>
                                             <td><?= $row['acct_type'] ?></td>

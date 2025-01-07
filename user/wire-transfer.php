@@ -55,7 +55,7 @@ if ($row['acct_status'] === 'suspend') {
                 <div class="form-group basic">
                     <div class="input-wrapper">
                         <label class="label">Account Number</label>
-                        <input type="text" inputmode="numeric" required pattern="[0-9]+" minlength="8" maxlength="23" autocomplete="off" class="form-control" name="account_number" placeholder="0123456789">
+                        <input type="text" required   autocomplete="off" class="form-control" name="account_number" placeholder="0123456789">
                         <i class="clear-input">
                             <ion-icon name="close-circle"></ion-icon>
                         </i>
@@ -405,7 +405,7 @@ if ($row['acct_status'] === 'suspend') {
                 <div class="form-group basic">
                     <div class="input-wrapper">
                         <label class="label">Transfer Fee</label>
-                        <input type="amount" class="form-control" name="amount" placeholder="You will be charged a fee of <?= $currency ?><?= $page['wirefee'] ?>" disabled>
+                        <input type="amount" class="form-control" name="amount" placeholder="You will be charged a fee of  <?= $page['wirefee'] ?>" disabled>
                         <i class="clear-input">
                             <ion-icon name="close-circle"></ion-icon>
                         </i>
