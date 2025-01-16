@@ -1741,7 +1741,7 @@ Makes bullets line up correctly
                                             rel="home" aria-current="page"><img width="329" height="56"
                                                 src="<?php echo $url; ?>/admin/assets/images/logo/<?php echo $image; ?>"
                                                 class="custom-logo" alt="<?php echo $name; ?> Logo"
-                                                srcset="<?php echo $url; ?>/admin/assets/images/logo/<?php echo $image; ?> 329w, <?php echo $url; ?>/wp-content/uploads/2018/12/WABlogo541_tagline-300x51.png 300w, <?php echo $url; ?>/wp-content/uploads/2018/12/WABlogo541_tagline-1024x175.png 1024w, <?php echo $url; ?>/wp-content/uploads/2018/12/WABlogo541_tagline-768x131.png 768w, <?php echo $url; ?>/wp-content/uploads/2018/12/WABlogo541_tagline.png 1047w"
+                                                srcset="<?php echo $url; ?>/admin/assets/images/logo/<?php echo $image; ?> 329w, <?php echo $url; ?>/admin/assets/images/logo/<?php echo $image; ?> 300w, <?php echo $url; ?>/admin/assets/images/logo/<?php echo $image; ?> 1024w, <?php echo $url; ?>/admin/assets/images/logo/<?php echo $image; ?> 768w, <?php echo $url; ?>/admin/assets/images/logo/<?php echo $image; ?> 1047w"
                                                 sizes="(max-width: 329px) 100vw, 329px" /></a></span>
                                 </div>
                             </div>
